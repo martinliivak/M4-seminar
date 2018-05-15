@@ -1,0 +1,27 @@
+---
+title: "Investigating ARIMA"
+author: "Markus Loide"
+date: "May 15, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+data <- read.csv("./data/opt-arima/residuals-10000-Hourly.csv")
+```
+
+```{r}
+data
+```
+
+```{r}
+p_vals <- apply(data, 1, function(x) Box.test(as.numeric(x[!is.na(x)]), type="Ljung-Box")$p.value)
+```
+
+```{r}
+hist(p_vals)
+```
+

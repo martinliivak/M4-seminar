@@ -16,7 +16,7 @@ library(plyr)
 The path for all the CSV files
 
 ```{r}
-temp = list.files(path="../../cut/10000/train/", pattern="*.csv")
+temp <- list.files(path="../../cut/10000/train/", pattern="*.csv")
 # temp <- c("Yearly.csv")
 ```
 
@@ -68,7 +68,7 @@ transform.data <- function(basepath, filename, horizon_length) {
   arima_pred <- cbind(id=data$V1[1:nrow(arima_pred)], arima_pred)
   arima_pred$.id <- NULL
   
-  write.csv(arima_pred, file=paste("10000-", filename, collapse="", sep=""), row.names=FALSE)  # Output as CSV
+  write.csv(arima_pred, file=paste("data/iterative-arima/10000-", filename, collapse="", sep=""), row.names=FALSE)  # Output as CSV
 }
 ```
 
